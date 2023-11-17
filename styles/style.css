@@ -65,6 +65,15 @@ body {
     background: linear-gradient(96deg, #ac6115 0%, #9e7a19 100%);
 }
 
+.common-title {
+    text-align: center;
+    font-family: 'Merriweather', sans-serif;
+    font-size: 64px;
+    line-height: 80px;
+    letter-spacing: 1.92px;
+    text-transform: uppercase;
+}
+
         /* тут мы отделяем все общие стили от стилей по блокам.
         все общие сверху, стили по блокам - ниже */
 
@@ -200,4 +209,242 @@ body {
     /* чтобы картинка правильно позиционировалась нам надо добавить еще одно свойство, но только в main-content
      .main-content .container
      */
+}
+
+.why {
+    background-image: url("../images/whybg.png");
+    /* нужно чтобы картинка правильно размещалась. по вертикали мы ее выровняем сверху , по горизонтали - по центру */
+    background-position: top center;
+    /* изменим размер картинки, чтобы она была такой какая есть на самом деле. чтобы браузер не изменял размер картинки */
+    background-size: initial;
+    /* делаем отступ снизу для блока */
+    padding-bottom: 180px;
+}
+
+
+
+.why-items {
+    margin-top: 60px;
+    /* сделаем чтобы элементы могли быть расположены в строку и чтобы мы могли удобно их позиционировать */
+    display: grid;
+    /* между ними отступ в 100 */
+    gap: 100px;
+    /* по первому квадрату в схеме они 312x287 (ширина и высота) */
+    /* создаем свойство grid, где говорим, что колонки будут повторяться 3 раза и что каждая из них 312 пикселей */
+    grid-template-columns: repeat(3, 312px);
+    /* чтобы выровнять весь контент по центру мы используем justify-content: */
+    justify-content: center;
+}
+
+.why-item {
+    text-align: center;
+}
+
+.why-item-title {
+    font-size: 24px;
+    /* нужно чтобы высота строки была чуть больше чем отступ текста */
+    padding: 24px 0;
+}
+
+.why-item-text {
+    font-size: 16px;
+    line-height: 140%;
+}
+
+/* делаем стили для секции с бургерами */
+.products {
+    background-image: url("../images/burgers_bg.png");
+    background-position: top center;
+    background-size: 1400px;
+    padding-bottom: 180px;
+}
+
+.products-items {
+    /* для того чтобы товары располагались сеткой нам нужен grid . это специальная сетка которая поможет быстро и удобно управлять элементами*/
+    display: grid;
+    grid-template-columns: repeat(3, 384px);
+    gap: 24px;
+    margin-top: 60px;
+}
+
+.products-item {
+    padding: 30px;
+    background: #211A16;
+    border-radius: 16px;
+    border: 1px solid #353535;
+}
+
+.products-item-image {
+    height: 250px;
+
+}
+
+/* нужно внутри задать стили для картинки.
+эта картинка не имеет никаких классов поэтому мы можем привязаться к классу но через пробел добавить img
+тогда стили применятся для картинки */
+
+.products-item-image img {
+    /* зададим максимальную ширину так как картинки имеют свойство расширяться даже если становятся больше чем размеры блока*/
+    max-width: 100%;
+}
+
+.products-item-title {
+    font-size: 24px;
+    line-height: 29px;
+    margin: 24px 0;
+}
+
+.products-item-text {
+    font-size: 16px;
+    line-height: 140%;
+    margin-bottom: 24px;
+}
+
+
+.products-item-extra {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.products-item-price {
+    font-size: 32px;
+    line-height: 39px;
+    margin-bottom: 8px;
+}
+
+.products-item-weight {
+    font-size: 16px;
+    line-height: 18px;
+    color: #757575;
+}
+
+/* стиль применится если есть два этих класса  */
+.button.product-button {
+    display: flex;
+    justify-content: center;
+    width: 182px;
+    height: 62px;
+}
+
+/* чтобы задать отступ между текстом "заказать" и иконкой корзины есть отступ
+ чтобы его задать мы используем прежний класс, добавим в него span через пробел и напишем псевдоселектор first child, что значит, что этот блок стилей применится к первому span внутри*/
+.button.product-button span:first-child {
+    margin-right: 10px;
+}
+
+
+/* первое что мы делаем это задаем фоновую картинку
+ бургер в коробке поместим в html
+ */
+.order {
+    background-image: url("../images/order_bg.png");
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding-bottom: 180px;
+    overflow: hidden;
+}
+
+.order .container {
+    position: relative;
+}
+
+/* класс для бургера в коробке */
+.order-image {
+    /* зададим абсолютное позиционирование, чтобы эта картинка вышла из сетки элементов и висела сверху и мы сможем позиционировать ее как угодно */
+    position: absolute;
+    /* top 0 - она будет располагаться сверху без смещения */
+    top: 0;
+    /* справа - расчет заранее */
+    right: calc(100% - 764px);
+    /* чтобы картинка не мешала заполнению формы мы ее разместим на заднем плане через z-index
+    -1 значит что меньше нуля разместим на задний план
+    */
+    z-index: -1;
+    /* чтобы картинка смещалась не относительно всей страницы,
+    а относительно нашего контейнера в блоке order  сделаем сверху селектор, который будет применяться конкретно к контейнеру в котором находится блок ордер*/
+}
+
+.order-form {
+    border-radius: 16px;
+    border: 1px solid #353535;
+    background: #211A16;
+    margin-top: 60px;
+    width: 426px;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    margin-left: 674px;
+}
+
+.order-form-text {
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+}
+
+.order-form-inputs {
+    display: flex;
+    flex-direction: column; /* все элементы располагаются в одну колонку */
+    margin-top: 40px;
+}
+
+
+.order-form-input {
+    width: 344px;
+    height: 62px;
+    /*
+    нам нужно задать фон для блока div, а внутрь размещаем импут
+    рамка это фон
+    используем градиент . 95.61deg это направление градиента. сначала прописываем один после 0% прописываем второй цвет.
+     */
+    background: linear-gradient(95.61deg,#DA8023 0%,#E2B438 100%);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*
+    импут будет строго мо центру
+     */
+}
+
+/* один стиль для блока (выше), второй для импута внутри */
+.order-form-input input {
+    padding: 16px 10px;
+    background: #211A16;
+    border-radius: 8px;
+    color: white; /* будет белый текст когда мы его будем вводить внутрь */
+    height: 60px;
+    width: 342px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid transparent; /* transparent - прозрачный */
+}
+
+.order-form-inputs .button {
+    /*
+    нужно сделать, чтобы кнопка была таких же размеров, как и весь блок.
+     */
+    width: 344px;
+    height: 62px;
+}
+
+.footer {
+    padding: 60px 0; /* слева и справа ноль так как за это отвечает контейнер */
+}
+
+/*
+у нас есть два элемента которые должны разнестись по разным сторонам и это мы сделаем благодаря контейнеру, который находится в футере
+
+ */
+.footer .container {
+    display: flex; /* задаем флекс чтобы удобно управлять контентом */
+    align-items: center; /* задаем центр, чтобы по вертикали были выровнены */
+    justify-content: space-between; /* чтобы разнеслись по разные стороны этого блока */
+}
+
+.rights {
+    font-size: 16px;
+    line-height: 20px;
 }
