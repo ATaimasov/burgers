@@ -19,17 +19,26 @@
             <nav class="menu">
                 <ul class="menu-list">
                     <li class="menu-item">
-                        <a href="#">Почему у нас</a>
+                        <a data-link="why">Почему у нас</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#">Меню бургеров</a>
+                        <!-- благодаря href="#products" мы можем использовать идентификатор который дали ранее бургеров.
+                        но скроллинг будет не плавный.
+                        плавным его можно сделать в js
+                        поэтому href убираем для ссылок
+
+                        вместо этого добавим специальный атрибут, который будет содержать некоторые данные которые мы будем использовать в js
+                        в данной ситуации мы будем хранить название блока к которому нужно перевестись
+                        data-link="" - в кавычках используем id, так как в js с ними работаем
+                        -->
+                        <a data-link="products">Меню бургеров</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#">Оформление заказа</a>
+                        <a data-link="order">Оформление заказа</a>
                     </li>
                 </ul>
             </nav>
-            <div class="currency" title="Изменить валюту">$</div>
+            <div class="currency" title="Изменить валюту" id="change-currency">$</div>
         </div>
     </header>
 
@@ -47,7 +56,7 @@
                 </p>
                 <!-- добавим кнопку "смотреть меню" но дополнительно ее завернем в div-->
                 <div class="main-action">
-                    <button class="button">Смотреть меню</button>
+                    <button class="button" id="main-action-button">Смотреть меню</button>
                 </div>
                 <!-- мы должны вставить картинку наравне с блоком со всей информацией -->
                 <img src="images/main_burger.png" alt="Big Burger" class="main-image">
@@ -56,7 +65,7 @@
     </section>
 </section>
 
-<section class="why">
+<section class="why" id="why">
     <!-- мы можем разместить контейнер, хоть это и не обязательно, тк как контент располагается по центру, но чтобы поддерживать правильную структуру верстки мы создадим его  -->
     <div class="container">
         <!-- мы можем использовать h2, h3, но ничего не мешает использовать div -->
@@ -90,7 +99,7 @@
     </div>
 </section>
 
-<section class="products">
+<section class="products" id="products">
     <!-- размещаем такой див с классом контейнер, так как весь контент ограничен в 1200 пикселей и выровнен по центру-->
     <div class="container">
         <div class="products-title common-title">выберите свой бургер</div>
@@ -106,7 +115,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">8 $</div>
+                        <div class="products-item-price" data-base-price="8">8 $</div>
                         <div class="products-item-weight">360 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -134,7 +143,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">7 $</div>
+                        <div class="products-item-price" data-base-price="7">7 $</div>
                         <div class="products-item-weight">390 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -162,7 +171,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">10 $</div>
+                        <div class="products-item-price" data-base-price="10">10 $</div>
                         <div class="products-item-weight">420 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -190,7 +199,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">7 $</div>
+                        <div class="products-item-price" data-base-price="7">7 $</div>
                         <div class="products-item-weight">220 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -218,7 +227,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">8 $</div>
+                        <div class="products-item-price" data-base-price="8">8 $</div>
                         <div class="products-item-weight">220 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -246,7 +255,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">9 $</div>
+                        <div class="products-item-price" data-base-price="9">9 $</div>
                         <div class="products-item-weight">320 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -281,7 +290,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">8 $</div>
+                        <div class="products-item-price" data-base-price="8">8 $</div>
                         <div class="products-item-weight">280 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -309,7 +318,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">7 $</div>
+                        <div class="products-item-price" data-base-price="7">7 $</div>
                         <div class="products-item-weight">380 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -337,7 +346,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">11 $</div>
+                        <div class="products-item-price" data-base-price="11">11 $</div>
                         <div class="products-item-weight">400 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -365,7 +374,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">9 $</div>
+                        <div class="products-item-price" data-base-price="9">9 $</div>
                         <div class="products-item-weight">300 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -393,7 +402,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">8 $</div>
+                        <div class="products-item-price" data-base-price="8">8 $</div>
                         <div class="products-item-weight">320 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -421,7 +430,7 @@
                 </div>
                 <div class="products-item-extra">
                     <div class="products-item-info">
-                        <div class="products-item-price">9 $</div>
+                        <div class="products-item-price" data-base-price="9">9 $</div>
                         <div class="products-item-weight">360 гр</div>
                     </div>
                     <div class="products-item-action">
@@ -444,7 +453,7 @@
     </div>
 </section>
 
-<section class="order">
+<section class="order" id="order">
     <div class="container">
     <!-- чтобы сделать два класса за раз нужно писать их через точку: div.order-title.common-title -->
     <div class="order-title common-title"> оформление заказа</div>
@@ -458,15 +467,15 @@
             Также появилось предупреждение, так как нету специального элемента label рядом, но это не критично и не ломает код
             -->
             <div class="order-form-input">
-                <input type="text" placeholder="Ваш заказ">
+                <input type="text" placeholder="Ваш заказ" id="burger">
             </div>
-            <div class="order-form-input">
-                <input type="text" placeholder="Ваше имя">
+            <div class="order-form-input" >
+                <input type="text" placeholder="Ваше имя" id="name">
                 </div>
             <div class="order-form-input">
-                <input type="text" placeholder="Ваш телефон">
+                <input type="text" placeholder="Ваш телефон" id="phone">
                 </div>
-            <button class="button">Оформить заказ</button>
+            <button class="button" id="order-action">Оформить заказ</button>
         </div>
     </div>
     </div>
@@ -480,6 +489,10 @@
         <div class="rights">Все права защищены</div>
     </div>
 </footer>
+
+<!-- подключаем js в конце так как важно чтобы все файлы отрисовались -->
+
+<script src="scripts/script.js"></script>
 
 </body>
 </html>
